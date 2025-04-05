@@ -11,19 +11,19 @@ const Input = ({ onsearch }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit} className="flex w-1/2">
-      <div className="flex w-full   justify-center">
+    <form onSubmit={handleSubmit} className="flex  md:w-1/2 w-full mx-2 ">
+      <div className="flex w-full  justify-center ">
         <input
-          className=" hover:shadow-blue-300  p-2  bg-white shadow-sm   w-[60%]   rounded-l-3xl   text-black"
+          className=" hover:shadow-blue-300  p-3  dark:bg-[#1e293a] dark:text-white dark:opacity-100 bg-white shadow-sm   w-full  md:w-[60%]   rounded-l-3xl   text-black"
           type="text"
           value={input}
-          placeholder="Pantau Kotamu"
+          placeholder="Pantau Langit Kotamu"
           onChange={(e) => setInput(e.target.value)}
         />
         <div className="  rounded-r-3xl shadow-sm shadow-blue-400 hover:shadow-blue-500">
           <button
             type="submit"
-            className="p-2  rounded-r-3xl    items-center flex  bg-blue-300"
+            className="p-3  rounded-r-3xl    items-center flex  bg-blue-300"
           >
             🔍
           </button>
