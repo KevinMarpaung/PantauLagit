@@ -1,8 +1,5 @@
-import CardSmallWeather from "./CardSmallWeather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDroplet, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faWind } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 export default function CardBigWeather({
   lokasi,
@@ -11,14 +8,19 @@ export default function CardBigWeather({
   ibukota,
   icon,
   cuaca,
+  children,
 }) {
   return (
-    <div className="   w-[75%]  rounded-xl text-black ">
+    <div className={` w-[75%]  rounded-xl text-black inset-shadow-sm `}>
       <div className="flex flex-col   text-start w-full p-5 gap-2 ">
         <div className="flex justify-between">
           <div>
+            <div className="">
+              <span className="  font-thin text-sm opacity-64  px-6  ">
+                {waktu}
+              </span>
+            </div>
             <h1 className="text-xl text-start  ">
-              <h1 className="  font-thin text-sm opacity-20">{waktu}</h1>
               <div className="gap-2 flex ">
                 <FontAwesomeIcon icon={faLocationDot} color="red" />
                 {ibukota} - {lokasi}{" "}
@@ -36,20 +38,8 @@ export default function CardBigWeather({
           </div>
         </div>
       </div>
-
       <div className="flex text-center  gap-6  justify-center my-13">
-        <CardSmallWeather
-          title={"Kelembapan"}
-          icon={<FontAwesomeIcon icon={faDroplet} color=" #0369a1" />}
-        ></CardSmallWeather>
-        <CardSmallWeather
-          icon={<FontAwesomeIcon icon={faWind} color=" #0369a1" />}
-          title={"kecepatan angin"}
-        ></CardSmallWeather>
-        <CardSmallWeather
-          title={"Sinar Ultraviolet (UV) "}
-          icon={<FontAwesomeIcon icon={faSun} color=" #0369a1" />}
-        ></CardSmallWeather>
+        {children}
       </div>
     </div>
   );

@@ -1,57 +1,46 @@
 import CardBigWeather from "../Elements/CardBigWeather";
-import CardSmallWeather from "../Elements/CardSmallWeather";
-import Navbar from "../Elements/Navbar";
 import Input from "../Elements/SearchBar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../index.css";
 import { Pagination } from "swiper/modules";
-import { FecthApi } from "../../api";
-import { useEffect, useState } from "react";
-
+import { useState, useEffect } from "react";
+import CardSmallWeather from "../Elements/CardSmallWeather";
+import { faDroplet, faSun, faWind } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const apiKey = import.meta.env.VITE_API_KEY;
-const Main = () => {
+const Main = ({ dataValue }) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [dataPencarian, setDataPencarian] = useState([]);
+
+  const handleSearch = async (input) => {
+    try {
+      const res = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${input}`
+      );
+      const data = await res.json();
+      setDataPencarian([data]);
+    } catch (error) {
+      console.error("Gagal ambil data cuaca:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const cities = [
-        "Jakarta",
-        "Surabaya",
-        "Medan",
-        "Bandung",
-        "Denpasar,",
-        "papua",
-        "balige",
-        "amerika",
-      ];
-
-      const results = await Promise.all(
-        cities.map((city) =>
-          FecthApi(
-            `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
-          )
-        )
-      );
-      const filteredResults = results.filter((result) => result !== null);
-
-      setData(filteredResults);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(data);
+    try {
+      if (dataValue) {
+        setData(dataValue);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [dataValue]);
   return (
     <div>
-      <Navbar></Navbar>
       <div className="flex  justify-center pt-5">
-        <Input></Input>
+        <Input onsearch={handleSearch}></Input>
       </div>
-      <div className=" gap-2 mt-10 flex">
+      <div className="mt-10 flex ">
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={30}
@@ -61,7 +50,7 @@ const Main = () => {
           modules={[Pagination]}
           className="mySwiper"
         >
-          {data.map((dat) => {
+          {[...dataPencarian, ...data].map((dat) => {
             return (
               <>
                 <SwiperSlide key={dat.id}>
@@ -73,7 +62,27 @@ const Main = () => {
                     temperatur={dat.current.temp_c}
                     icon={`https:${dat.current.condition.icon}`}
                     cuaca={dat.current.condition.text}
-                  />
+                    dataCard={data}
+                  >
+                    <CardSmallWeather
+                      title={"Kelembapan"}
+                      angka={dat.current.humidity}
+                      icon={
+                        <FontAwesomeIcon icon={faDroplet} color=" #0369a1" />
+                      }
+                      persen={"%"}
+                    ></CardSmallWeather>
+                    <CardSmallWeather
+                      angka={dat.current.uv}
+                      title={"Sinar Ultraviolet (UV) "}
+                      icon={<FontAwesomeIcon icon={faSun} color=" #0369a1" />}
+                    ></CardSmallWeather>{" "}
+                    <CardSmallWeather
+                      angka={dat.current.wind_kph}
+                      icon={<FontAwesomeIcon icon={faWind} color=" #0369a1" />}
+                      title={"kecepatan angin"}
+                    ></CardSmallWeather>
+                  </CardBigWeather>
                 </SwiperSlide>
               </>
             );

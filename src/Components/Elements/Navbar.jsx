@@ -6,7 +6,6 @@ const Navbar = () => {
           <img src="img/icon.png" alt="" className="w-[50px]" />
           <div className="mx-5 -mt-7">
             <h1 className="text-3xl font-bold ">PantauLangit</h1>
-            <p className="text-end">21:00 pm</p>
           </div>
         </div>
         <div className=" flex mx-10 p-1  ">
