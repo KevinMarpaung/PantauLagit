@@ -131,7 +131,7 @@ const Main = ({ dataValue }) => {
       <div className="flex justify-center md:-mt-10">
         <Input onsearch={handleSearch} />
       </div>
-      <div className="md:mt-4 mt-2 flex flex-col mx-2 md:mx-0">
+      <div className="md:mt-4 mt-2 flex flex-col  md:mx-0">
         {isDesktop ? (
           <Swiper
             slidesPerView={"auto"}

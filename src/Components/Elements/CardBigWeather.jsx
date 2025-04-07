@@ -14,7 +14,7 @@ const CardBigWeather = ({
 }) => {
   return (
     <div
-      className={` md:w-[55%]  dark:text-white  dark:bg-[#1e293a] w-[85%] m-auto  h-[200px] md:h-fit   rounded-xl text-black inset-shadow-sm  bg-cover  md:bg-none md:bg-white`}
+      className={` md:w-[55%]  dark:text-white  dark:bg-[#1e293a] mx-2 md:mx-0 m-auto  h-[200px] md:h-fit   rounded-xl text-black inset-shadow-sm  bg-cover  md:bg-none md:bg-white`}
     >
       <div className="flex flex-col   text-start w-full px-5 gap-2 ">
         <div className="flex justify-between opacity-86">
