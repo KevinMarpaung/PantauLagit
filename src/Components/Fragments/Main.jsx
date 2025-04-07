@@ -42,6 +42,32 @@ const Main = ({ dataValue }) => {
     return defaultIcon;
   };
 
+  const getWeatherQuote = (cuaca) => {
+    const lower = cuaca.toLowerCase();
+
+    if (lower.includes("rain")) {
+      return `"Hujan turun... seperti deadline yang tiba-tiba datang."`;
+    }
+    if (
+      lower.includes("cloudy") ||
+      lower.includes("fog") ||
+      lower.includes("overcast")
+    ) {
+      return `"Mendung itu romantis, kalau nggak sendirian."`;
+    }
+    if (lower.includes("sun") || lower.includes("clear")) {
+      return ` "Hari ini cerah, jangan lupa cerahin juga pikiran dan semangatmu.",`;
+    }
+    if (lower.includes("mist")) {
+      return `"Awan gelap itu hanya lewat, kayak masalah yang sebentar lagi selesai."`;
+    }
+    if (lower.includes("snow")) {
+      return `"Salju mengajarkan kita bahwa bahkan dingin pun bisa terlihat indah."`;
+    }
+
+    return `"Cuaca mungkin berubah-ubah, tapi semangat kita harus tetap cerah."`;
+  };
+
   const handleSearch = async (input) => {
     try {
       const res = await fetch(
@@ -77,8 +103,9 @@ const Main = ({ dataValue }) => {
       icon={getWeatherIcon(dat.current.condition.text)}
       cuaca={dat.current.condition.text}
       dataCard={data}
+      quotes={getWeatherQuote(dat.current.condition.text)}
     >
-      <div className=" hidden md:flex gap-1  opacity-88 py-6   ">
+      <div className="hidden md:flex gap-1 opacity-88 py-6">
         <CardSmallWeather
           title="Kelembapan"
           angka={dat.current.humidity}
@@ -101,11 +128,10 @@ const Main = ({ dataValue }) => {
 
   return (
     <div>
-      <div className="flex justify-center py-5 md:pt-0">
+      <div className="flex justify-center md:-mt-10">
         <Input onsearch={handleSearch} />
       </div>
-
-      <div className="mt-2 flex flex-col mx-2 md:mx-0">
+      <div className="md:mt-4 mt-2 flex flex-col mx-2 md:mx-0">
         {isDesktop ? (
           <Swiper
             slidesPerView={"auto"}

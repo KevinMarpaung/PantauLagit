@@ -12,14 +12,16 @@ const Navbar = () => {
   }, [isDarkMode]);
 
   return (
-    <div className="  flex justify-between  items-center ">
-      <div className=" mx-2 my-2 ">
+    <div className="  flex justify-between   items-center ">
+      <div className=" mx-2 mt-2 ">
         <img src={iconLogo} alt="" className="w-[50px]" />
         <div className="mx-5 -mt-7">
-          <h1 className="text-3xl font-bold  font-poppins">PantauLangit</h1>
+          <h1 className="md:text-3xl font-bold  font-poppins dark:text-white ">
+            PantauLangit
+          </h1>
         </div>
       </div>
-      <div className=" flex mx-10 p-1  ">
+      <div className=" flex md:mx-10 mx-2 p-1  ">
         <div>
           <button
             onClick={() => setIsDarkMode(false)}

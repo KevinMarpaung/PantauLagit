@@ -11,10 +11,13 @@ const Input = ({ onsearch }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit} className="flex  md:w-1/2 w-full mx-2 ">
+    <form
+      onSubmit={handleSubmit}
+      className="flex   md:w-1/2 w-1/2 my-2 md:my-0 mx-2 "
+    >
       <div className="flex w-full  justify-center ">
         <input
-          className=" hover:shadow-blue-300  p-3  dark:bg-[#1e293a] dark:text-white dark:opacity-100 bg-white shadow-sm   w-full  md:w-[60%]   rounded-l-3xl   text-black"
+          className=" hover:shadow-blue-300  px-3  dark:bg-[#1e293a] dark:text-white dark:opacity-100 bg-white shadow-sm text-sm   w-full  md:w-[60%]   rounded-l-xl   text-black"
           type="text"
           value={input}
           placeholder="Pantau Langit Kotamu"

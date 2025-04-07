@@ -5,39 +5,64 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 export default function Footer() {
   return (
-    <div className=" dark:text-white text-black flex items-center justify-between mt-8   shadow">
-      <div className=" ">
-        <p className="text-xs mx-10 ">
-          Sebuah Website Yang Bisa <br /> Memantau Cuaca Diseluruh Dunia <br />
-          secara realtime
+    <div className="dark:text-white dark:bg-[#1e293a] text-black flex items-center justify-between mt-2 shadow">
+      <div className="p-1 mx-5">
+        <h1>Tentang Aplikasi</h1>
+        <p className="text-sm font-light opacity-40">
+          Aplikasi Prediksi Cuaca Seluruh Dunia menggunakan <br />
+          API OpenWeather
         </p>
       </div>
 
-      <div className="flex gap-2 mx-10 items-center">
-        {" "}
-        <FontAwesomeIcon
-          size="lg"
-          className="dark:text-white  "
-          icon={faGithub}
-        />
-        <FontAwesomeIcon
-          className="dark:text-white  "
-          icon={faInstagram}
-          size="lg"
-        />
-        <FontAwesomeIcon
-          className="dark:text-white  "
-          icon={faEnvelope}
-          size="lg"
-        />
-        <FontAwesomeIcon
-          className="dark:text-white  "
-          icon={faLinkedin}
-          size="lg"
-        />{" "}
-        <p className="text-xs">©2025 Create BY Kzvin</p>
+      <div className="flex gap-3 mx-10 items-center justify-center">
+        <a
+          href="https://github.com/KevinMarpaung"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            size="lg"
+            className="dark:text-white hover:text-gray-400 transition"
+            icon={faGithub}
+          />
+        </a>
+        <a
+          href="https://instagram.com/kzvin_"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            size="lg"
+            className="dark:text-white hover:text-pink-400 transition"
+            icon={faInstagram}
+          />
+        </a>
+        <a
+          href="mailto:kmarpaung430@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            size="lg"
+            className="dark:text-white hover:text-blue-300 transition"
+            icon={faEnvelope}
+          />
+        </a>
+        <a
+          href="https://linkedin.com/in/kevin-marpaung0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon
+            size="lg"
+            className="dark:text-white hover:text-blue-500 transition"
+            icon={faLinkedin}
+          />
+        </a>
+        <p className="text-xs hidden md:flex">©2025 Dibuat Oleh Kzvin</p>
       </div>
     </div>
   );
