@@ -9,7 +9,6 @@ import CardBigWeather from "../Elements/CardBigWeather";
 import Input from "../Elements/SearchBar";
 import CardSmallWeather from "../Elements/CardSmallWeather";
 import "../../index.css";
-
 import sunnyIcon from "../../assets/cloudy.svg";
 import suny from "../../assets/day.svg";
 import mistIcon from "../../assets/cloudy.svg";

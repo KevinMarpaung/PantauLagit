@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import { FecthApi } from "../api";
 import Navbar from "../Components/Elements/Navbar";
 import Layout from "../Components/Layouts/Layout";
+import AOS from "aos";
 import Footer from "../Components/Elements/Footer";
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [dataValue, setDatavalue] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      once: true,
+    });
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       const cities = ["Jakarta", "Medan", "Bandung", "Denpasar,", "papua"];
@@ -31,8 +39,15 @@ const Home = () => {
 
   return (
     <Layout>
-      <Navbar />
-      <Main dataValue={dataValue}></Main>
+      <div data-aos="fade-down">
+        <Navbar />
+      </div>
+      <div data-aos="flip-left">
+        <Main dataValue={dataValue}></Main>
+      </div>
+      <div data-aos="fade-up">
+        <Footer></Footer>
+      </div>
     </Layout>
   );
 };
